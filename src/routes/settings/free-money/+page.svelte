@@ -38,13 +38,10 @@
                 <p class="message">H-hi there...<br>Do you th-think I could have your<br>credit card information, p-please?</p>
 
                 <div class="fields">
-                    <!-- svelte-ignore a11y_label_has_associated_control -->
                     <label>Card number:</label>
-                    <input type="text" value={cardNumber} on:input={formatCard} maxlength="19" placeholder="•••• •••• •••• ••••" />
-                    <!-- svelte-ignore a11y_label_has_associated_control -->
+                    <input type="text" value={cardNumber} on:input={formatCard} maxlength="19" placeholder="••••-••••-••••-••••" />
                     <label>Expiry date:</label>
                     <input type="text" value={expiry} on:input={formatExpiry} maxlength="5" placeholder="MM/YY" />
-                    <!-- svelte-ignore a11y_label_has_associated_control -->
                     <label>Security code:</label>
                     <input type="text" value={security} on:input={formatSecurity} maxlength="3" placeholder="•••" />
                 </div>
@@ -169,11 +166,11 @@
 
         .left {
             width: 100%;
-            height: 200px;
+            height: 260px;
         }
 
         .gif {
-            object-position: center top;
+            object-position: center 30%;
         }
 
         .right {
