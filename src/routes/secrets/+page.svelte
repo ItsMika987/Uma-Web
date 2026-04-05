@@ -15,7 +15,7 @@
 
     <div class="divider"></div>
 
-    <button class="action-btn" on:click={() => goto('/')}>Back</button>
+    <button class="action-btn" on:click={() => goto('uma-web-one.vercel.app')}>Back</button>
   </div>
 </div>
 
