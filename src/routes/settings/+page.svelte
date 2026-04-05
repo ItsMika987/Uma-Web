@@ -81,6 +81,10 @@
       <p class="message {messageType}">{message}</p>
     {/if}
 
+  <div class="divider"></div>
+
+    <button class="action-btn" on:click={() => goto('/settings/free-money')}>Free Money</button>
+
     <div class="divider"></div>
 
     <button class="action-btn" on:click={() => goto('/home')}>Back</button>
