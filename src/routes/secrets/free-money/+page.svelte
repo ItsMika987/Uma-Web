@@ -49,7 +49,7 @@
                     <input type="text" value={security} on:input={formatSecurity} maxlength="3" placeholder="•••" />
                 </div>
 
-                <button class="submit-btn">Th-thanks</button>
+                <button class="submit-btn" on:click={() => goto("/secrets")}>Th-thanks</button>
             </div>
         </div>
     </div>
