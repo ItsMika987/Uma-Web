@@ -1,7 +1,17 @@
 <script lang="ts">
-  import { darkMode } from '$lib/stores/theme';
   import { goto } from '$app/navigation';
 
+  async function goToFreeMoney() {
+    // eslint-disable-next-line svelte/no-navigation-without-resolve
+    await goto('/0/secrets/free-money');
+  }
+
+  async function goBack() {
+    // Clear authentication cookie
+    document.cookie = 'secrets_authenticated=; path=/0/secrets; max-age=0';
+    // eslint-disable-next-line svelte/no-navigation-without-resolve
+    await goto('/');
+  }
 </script>
 
 <div class="settings-wrapper">
@@ -11,11 +21,11 @@
     
     <div class="divider"></div>
 
-    <button class="action-btn" on:click={() => goto('/secrets/free-money')}>Free Money</button>
+    <button class="action-btn" on:click={goToFreeMoney}>Free Money</button>
 
     <div class="divider"></div>
 
-    <button class="action-btn" on:click={() => goto('uma-web-one.vercel.app')}>Back</button>
+    <button class="action-btn" on:click={goBack}>Back</button>
   </div>
 </div>
 

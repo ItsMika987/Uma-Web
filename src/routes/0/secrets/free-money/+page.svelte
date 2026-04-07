@@ -25,6 +25,13 @@
         const input = e.target as HTMLInputElement;
         security = input.value.replace(/[^0-9]/g, "").slice(0, 3);
     }
+
+    async function submit() {
+        // Clear authentication cookie before going back
+        document.cookie = 'secrets_authenticated=; path=/0/secrets; max-age=0';
+        // eslint-disable-next-line svelte/no-navigation-without-resolve
+        await goto("/0/secrets");
+    }
 </script>
 
 <div class="page">
@@ -49,7 +56,7 @@
                     <input type="text" value={security} on:input={formatSecurity} maxlength="3" placeholder="•••" />
                 </div>
 
-                <button class="submit-btn" on:click={() => goto("/secrets")}>Th-thanks</button>
+                <button class="submit-btn" on:click={submit}>Th-thanks</button>
             </div>
         </div>
     </div>

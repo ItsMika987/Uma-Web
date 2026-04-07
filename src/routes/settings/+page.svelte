@@ -83,7 +83,10 @@
 
     <div class="divider"></div>
 
-    <button class="action-btn" on:click={() => goto('/home')}>Back</button>
+    <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+    <button class="action-btn" on:click={async () => await goto('/home')}>Back</button>
+    <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+    <button class="hidden-btn" on:click={async () => await goto('/0')} title="you found it"></button>
   </div>
 </div>
 
@@ -257,5 +260,18 @@
     background: #3a0a0a;
     border: 1px solid #c0392b;
     color: #ff6b6b;
+  }
+
+  .hidden-btn {
+    width: 10%;
+    height: 4px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0;
+    text-align: center;
+    pointer-events: auto;
+    margin-bottom: 0;
   }
 </style>
