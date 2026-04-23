@@ -1,24 +1,25 @@
 <script>
   import { goto } from "$app/navigation";
+  import { resolve } from "$app/paths";
 
   function startGame() {
-    goto("/select");
+    goto(resolve("/select"));
   }
 
   function goBack() {
-    goto("/");
+    goto(resolve("/"));
   }
 
   function settings() {
-    goto("/settings");
+    goto(resolve("/settings"));
   }
 
   function scout() {
-    goto("/scout");
+    goto(resolve("/scout"));
   }
 
     function enhance() {
-    goto("/enhance");
+    goto(resolve("/enhance"));
   }
 </script>
 
