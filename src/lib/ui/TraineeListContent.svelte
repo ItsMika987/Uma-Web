@@ -1,54 +1,43 @@
 <script lang="ts">
 	import { scoutedTrainees, unscoutedTrainees } from '$lib/stores/game';
-	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
 
-	function goBack() {
-		goto(resolve('/enhance/trainee'));
-	}
+	export let onBack: (() => void) | undefined = undefined;
 </script>
 
-<div class="page">
-	<div class="container">
-		<h1 class="title">Trainee Umamusume</h1>
+<div class="container">
+	<h1 class="title">Trainee Umamusume</h1>
 
-		<h2 class="section-title">Scouted</h2>
-		<div class="grid">
-			{#each $scoutedTrainees as uma (uma.id)}
-				<div class="card rarity-{uma.rarity}">
-					<div class="name">{uma.name}</div>
-					<div class="stars">{'★'.repeat(uma.rarity)}</div>
-				</div>
-			{/each}
-		</div>
-
-		<h2 class="section-title">Unscouted</h2>
-		<div class="grid">
-			{#each $unscoutedTrainees as uma (uma.id)}
-				<div class="card locked">
-					<div class="name">{uma.name}</div>
-					<div class="stars">{'★'.repeat(uma.rarity)}</div>
-				</div>
-			{/each}
-		</div>
-
-		<button class="soon-btn small" on:click={goBack}>Back</button>
+	<h2 class="section-title">Scouted</h2>
+	<div class="grid">
+		{#each $scoutedTrainees as uma (uma.id)}
+			<div class="card rarity-{uma.rarity}">
+				<div class="name">{uma.name}</div>
+				<div class="stars">{'★'.repeat(uma.rarity)}</div>
+			</div>
+		{/each}
 	</div>
+
+	<h2 class="section-title">Unscouted</h2>
+	<div class="grid">
+		{#each $unscoutedTrainees as uma (uma.id)}
+			<div class="card locked">
+				<div class="name">{uma.name}</div>
+				<div class="stars">{'★'.repeat(uma.rarity)}</div>
+			</div>
+		{/each}
+	</div>
+
+	<button class="back-btn" on:click={() => onBack?.()}>Back</button>
 </div>
 
 <style>
-	.page {
-		width: 100%;
-		padding: 20px 0 40px;
-		box-sizing: border-box;
-	}
-
 	.container {
 		width: 100%;
 		max-width: 640px;
 		margin: 0 auto;
 		padding: 0 20px;
 		box-sizing: border-box;
+		text-align: center;
 	}
 
 	.title {
@@ -110,12 +99,12 @@
 		font-size: 1.1rem;
 	}
 
-	.soon-btn {
-		padding: 1rem 2rem;
-		font-size: clamp(1rem, 4vw, 1.2rem);
+	.back-btn {
+		padding: 0.8rem 1.5rem;
+		font-size: clamp(0.9rem, 3vw, 1rem);
 		border-radius: 12px;
 		cursor: pointer;
-		width: 100%;
+		margin-top: 28px;
 		transition:
 			background 0.15s,
 			border-color 0.15s,
@@ -124,23 +113,12 @@
 		border: 1px solid var(--box-border);
 		background: var(--button-bg);
 		color: var(--button-text);
+		font-family: monospace;
 	}
 
-	.soon-btn:active {
-		transform: scale(0.96);
-	}
-
-	.soon-btn:hover {
+	.back-btn:hover {
 		background: var(--button-hover);
 		border-color: var(--button-border-hover);
-		color: var(--button-text);
 		transform: scale(1.03);
-	}
-
-	.soon-btn.small {
-		width: fit-content;
-		padding: 10px 18px;
-		margin: 28px auto 0 auto;
-		display: block;
 	}
 </style>

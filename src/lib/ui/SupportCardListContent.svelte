@@ -1,11 +1,7 @@
 <script lang="ts">
 	import { scoutedSupports } from '$lib/stores/game';
-	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
 
-	function goBack() {
-		goto(resolve('/enhance/support-cards'));
-	}
+	export let onBack: (() => void) | undefined = undefined;
 
 	const typeColors: Record<string, string> = {
 		Speed: '#4aa3ff',
@@ -17,50 +13,43 @@
 	};
 </script>
 
-<div class="page">
-	<div class="container">
-		<h1 class="title">Support Card List</h1>
+<div class="container">
+	<h1 class="title">Support Card List</h1>
 
-		<div class="grid">
-			{#each $scoutedSupports as card (card.id)}
-				<div class="card rarity-{card.rarity}">
-					<div
-						class="type-badge"
-						style="background: {typeColors[card.type]}22; color: {typeColors[
-							card.type
-						]}; border-color: {typeColors[card.type]}44"
-					>
-						{card.type}
-					</div>
-					<div class="name">{card.name}</div>
-					<div class="character">{card.character}</div>
-					<div
-						class="rarity-label"
-						style="color: {card.rarity === 3 ? '#9B30FF' : card.rarity === 2 ? '#FFC700' : '#888'}"
-					>
-						{card.rarity === 3 ? 'SSR' : card.rarity === 2 ? 'SR' : 'R'}
-					</div>
+	<div class="grid">
+		{#each $scoutedSupports as card (card.id)}
+			<div class="card rarity-{card.rarity}">
+				<div
+					class="type-badge"
+					style="background: {typeColors[card.type]}22; color: {typeColors[
+						card.type
+					]}; border-color: {typeColors[card.type]}44"
+				>
+					{card.type}
 				</div>
-			{/each}
-		</div>
-
-		<button class="soon-btn small" on:click={goBack}>Back</button>
+				<div class="name">{card.name}</div>
+				<div class="character">{card.character}</div>
+				<div
+					class="rarity-label"
+					style="color: {card.rarity === 3 ? '#9B30FF' : card.rarity === 2 ? '#FFC700' : '#888'}"
+				>
+					{card.rarity === 3 ? 'SSR' : card.rarity === 2 ? 'SR' : 'R'}
+				</div>
+			</div>
+		{/each}
 	</div>
+
+	<button class="back-btn" on:click={onBack}>Back</button>
 </div>
 
 <style>
-	.page {
-		width: 100%;
-		padding: 20px 0 40px;
-		box-sizing: border-box;
-	}
-
 	.container {
 		width: 100%;
 		max-width: 700px;
 		margin: 0 auto;
 		padding: 0 20px;
 		box-sizing: border-box;
+		text-align: center;
 	}
 
 	.title {
@@ -68,14 +57,6 @@
 		font-weight: 700;
 		color: var(--text);
 		margin: 0 0 24px;
-		text-align: center;
-	}
-
-	.section-title {
-		margin: 32px 0 12px;
-		font-size: 1.2rem;
-		font-weight: 700;
-		color: var(--text);
 		text-align: center;
 	}
 
@@ -105,11 +86,6 @@
 		border-color: #9b30ff;
 	}
 
-	.locked {
-		opacity: 0.35;
-		filter: grayscale(100%);
-	}
-
 	.type-badge {
 		display: inline-block;
 		font-size: 0.7rem;
@@ -117,7 +93,6 @@
 		border-radius: 999px;
 		border: 1px solid var(--box-border);
 		margin-bottom: 6px;
-		background: var(--button-bg);
 	}
 
 	.name {
@@ -139,12 +114,12 @@
 		letter-spacing: 0.05em;
 	}
 
-	.soon-btn {
-		padding: 1rem 2rem;
-		font-size: clamp(1rem, 4vw, 1.2rem);
+	.back-btn {
+		padding: 0.8rem 1.5rem;
+		font-size: clamp(0.9rem, 3vw, 1rem);
 		border-radius: 12px;
 		cursor: pointer;
-		width: 100%;
+		margin-top: 28px;
 		transition:
 			background 0.15s,
 			border-color 0.15s,
@@ -153,21 +128,12 @@
 		border: 1px solid var(--box-border);
 		background: var(--button-bg);
 		color: var(--button-text);
+		font-family: monospace;
 	}
 
-	.soon-btn:active {
-		transform: scale(0.96);
-	}
-	.soon-btn:hover {
+	.back-btn:hover {
 		background: var(--button-hover);
 		border-color: var(--button-border-hover);
 		transform: scale(1.03);
-	}
-
-	.soon-btn.small {
-		width: fit-content;
-		padding: 10px 18px;
-		margin: 28px auto 0 auto;
-		display: block;
 	}
 </style>
