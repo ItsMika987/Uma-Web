@@ -93,7 +93,7 @@
 
 	{#if lastTen.length > 0}
 		<div class="ten-results">
-			{#each lastTen as entry (entry.uma.id)}
+			{#each lastTen as entry, i (i)}
 				<div class="result-card rarity-{entry.uma.rarity}">
 					<div class="name-row">
 						<div class="name">{entry.uma.name}</div>
@@ -146,7 +146,7 @@
 
 	{#if lastTenSupport.length > 0}
 		<div class="ten-results">
-			{#each lastTenSupport as entry (entry.card.id)}
+			{#each lastTenSupport as entry, i (i)}
 				<div
 					class="result-card"
 					style="border-color: {entry.card.rarity === 3

@@ -11,7 +11,7 @@ ownership attributre except for the code that i upload to said repository and
 the repository itself
 
 the use of said code and/or entire project in a maner where payment of any form is
-needed to acces is not permitted
+needed to acces is not permitted via the MIT License
 
 if updates are sent to ItsMika, please credit yourself in the "upates.md" with the
 version being "x.x.x.(x): [uploader name and/or X handle]" and recognition will be made if
@@ -19,4 +19,4 @@ community sent updates are used in the original project
 
 please respect the terms laid out by the original uploader/developer (ItsMika) and enjoy the project as you wish
 
-- README.md [V.0.0.1: ItsMika]
+- README.md [V.0.0.2: ItsMika]

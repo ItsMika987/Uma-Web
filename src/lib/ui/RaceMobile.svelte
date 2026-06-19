@@ -88,9 +88,11 @@
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
-		padding: 12px;
+		padding: 12px 12px 100px;
 		background: var(--bg);
 		color: var(--text);
+		height: 100dvh;
+		overflow-y: auto;
 	}
 
 	.leaderboard-box,
@@ -138,7 +140,9 @@
 		background: var(--bg);
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
+		overflow-y: auto;
+		padding: 2rem 0;
 	}
 
 	.results-box {

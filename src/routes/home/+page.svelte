@@ -42,7 +42,12 @@
 <div class="layout">
 	<div class="main-area">
 		<div class="left-column">
-			<button class="menu-btn" on:click={toggleMenu} aria-label="Menu">&#9776;</button>
+			<div class="top-row">
+				{#if activeTab === 'home'}
+					<div class="team-rank">Team Rank: <strong>&mdash;</strong></div>
+				{/if}
+				<button class="menu-btn" on:click={toggleMenu} aria-label="Menu">&#9776;</button>
+			</div>
 			<div class="content-area">
 				{#if activeTab === 'enhance'}
 					<EnhanceContent />
@@ -217,20 +222,40 @@
 		pointer-events: none;
 	}
 
+	.top-row {
+		display: flex;
+		align-items: center;
+		padding: 0.5rem 0.5rem 0;
+	}
+
 	.menu-btn {
+		flex-shrink: 0;
 		margin-left: auto;
-		background: none;
-		border: none;
+		background: var(--box-bg);
+		border: 1px solid var(--box-border);
+		border-radius: 8px;
 		color: var(--text);
 		font-size: 1.3rem;
 		cursor: pointer;
-		padding: 0.2rem 0.4rem;
+		padding: 0.35rem 0.55rem;
 		line-height: 1;
 		font-family: monospace;
+		transition: background 0.15s;
 	}
 
 	.menu-btn:hover {
+		background: var(--box-border);
+	}
+
+	.team-rank {
+		font-size: 1.1rem;
+		color: var(--text);
 		opacity: 0.7;
+	}
+
+	.team-rank strong {
+		color: var(--text);
+		opacity: 1;
 	}
 
 	.overlay {

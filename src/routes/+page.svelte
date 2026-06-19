@@ -14,7 +14,7 @@
 	<button class="start-btn" on:click={start}>Start</button>
 
 	<div class="footer">
-		v0.0.5<br />
+		v0.0.6<br />
 		made by @ItsMika987 on X
 	</div>
 </div>

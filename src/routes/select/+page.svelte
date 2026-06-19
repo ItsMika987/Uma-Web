@@ -49,7 +49,7 @@
 
 <style>
 	.wrapper {
-		height: 100vh;
+		height: 100dvh;
 		padding: 1.5rem;
 		text-align: center;
 		box-sizing: border-box;
@@ -60,8 +60,8 @@
 	}
 
 	h1 {
-		font-size: clamp(2rem, 5vw, 3rem);
-		margin-bottom: 1.5rem;
+		font-size: clamp(1.5rem, 5vw, 3rem);
+		margin-bottom: 1rem;
 		color: var(--text);
 	}
 
@@ -75,14 +75,14 @@
 
 	.grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-		gap: 12px;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 10px;
 		max-width: 900px;
 		margin: 0 auto 2rem;
 	}
 
 	.uma-btn {
-		padding: 0.9rem 1rem;
+		padding: 1rem 0.75rem;
 		border-radius: 12px;
 		cursor: pointer;
 		background: var(--button-bg);
@@ -92,7 +92,11 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		gap: 4px;
+		min-height: 60px;
+		-webkit-tap-highlight-color: transparent;
+		user-select: none;
 	}
 
 	.uma-btn:hover {
@@ -113,35 +117,39 @@
 		background: var(--selected-bg) !important;
 		border-color: var(--selected-border) !important;
 		transform: scale(1.03);
+		box-shadow: 0 0 0 2px var(--selected-border);
 	}
 
 	.name {
-		font-size: clamp(0.9rem, 3vw, 1.1rem);
+		font-size: 0.95rem;
 		font-weight: 600;
 	}
 
 	.stars {
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 		color: gold;
 	}
 
 	.bottom-row {
 		display: flex;
 		justify-content: center;
-		gap: 20px;
-		flex-wrap: wrap;
-		margin-top: 1rem;
+		gap: 12px;
+		margin-top: auto;
+		padding-top: 1rem;
 	}
 
 	.action-btn {
-		padding: 0.9rem 2rem;
-		font-size: clamp(1rem, 4vw, 1.2rem);
+		flex: 1;
+		max-width: 260px;
+		padding: 0.9rem 1.5rem;
+		font-size: 1rem;
 		border-radius: 12px;
 		background: var(--button-bg);
 		color: var(--button-text);
 		border: 1px solid var(--box-border);
 		cursor: pointer;
 		transition: 0.15s;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	.action-btn:hover {
@@ -153,5 +161,42 @@
 	.disabled {
 		opacity: 0.4;
 		pointer-events: none;
+	}
+
+	@media (max-width: 680px) {
+		.wrapper {
+			padding: 1rem;
+		}
+
+		.grid {
+			grid-template-columns: 1fr;
+		}
+
+		.uma-btn {
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 1.1rem 1.25rem;
+			min-height: 54px;
+		}
+
+		.name {
+			font-size: 1rem;
+		}
+
+		.stars {
+			font-size: 0.95rem;
+		}
+
+		.bottom-row {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 10px;
+		}
+
+		.action-btn {
+			max-width: none;
+			padding: 1.1rem 1.5rem;
+			font-size: 1.1rem;
+		}
 	}
 </style>

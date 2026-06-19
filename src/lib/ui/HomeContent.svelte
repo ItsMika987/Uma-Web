@@ -1,6 +1,4 @@
 <div class="home">
-	<div class="team-rank">Team Rank: <strong>—</strong></div>
-
 	<div class="stat-bar">
 		<div class="stat-row">
 			<div class="stat">TP: <strong>&mdash;</strong></div>
@@ -36,18 +34,6 @@
 		margin: 0.5rem 0 0;
 		font-size: clamp(1.5rem, 5vw, 2rem);
 		color: var(--text);
-	}
-
-	.team-rank {
-		align-self: flex-start;
-		font-size: 1.1rem;
-		color: var(--text);
-		opacity: 0.7;
-	}
-
-	.team-rank strong {
-		color: var(--text);
-		opacity: 1;
 	}
 
 	.stat {
