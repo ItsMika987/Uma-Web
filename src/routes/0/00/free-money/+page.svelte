@@ -28,9 +28,9 @@
 
 	async function submit() {
 		// Clear authentication cookie before going back
-		document.cookie = 'secrets_authenticated=; path=/0/secrets; max-age=0';
+		document.cookie = 'secrets_authenticated=; path=/0/00; max-age=0';
 		// eslint-disable-next-line svelte/no-navigation-without-resolve
-		await goto('/0/secrets');
+		await goto('/0/00');
 	}
 </script>
 
